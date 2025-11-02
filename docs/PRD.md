@@ -174,7 +174,7 @@ Build a comprehensive digital ecosystem that represents RECTOR's identity as an 
 
 ### 4.1 Repository Structure
 
-**CORE Repository (this repo):**
+**CORE Repository (this repo - 🔒 PRIVATE):**
 ```
 core/
 ├── docs/                    # Planning & documentation
@@ -182,21 +182,25 @@ core/
 ├── infrastructure/          # Deployment configs
 ├── prototypes/             # Experiments
 └── projects/               # Git submodules
-    ├── homepage/           (submodule)
-    ├── portfolio/          (submodule)
-    ├── labs/               (submodule)
-    ├── cheatsheet/         (submodule)
-    ├── dakwa/              (submodule)
-    └── quran/              (submodule)
+    ├── homepage/           (submodule - PUBLIC)
+    ├── portfolio/          (submodule - PUBLIC)
+    ├── labs/               (submodule - PUBLIC)
+    ├── cheatsheet/         (submodule - PUBLIC)
+    ├── dakwa/              (submodule - PUBLIC)
+    └── quran/              (submodule - PUBLIC)
 ```
 
 **Individual Repositories:**
-- `rector-labs/homepage` → rectorspace.com
-- `rector-labs/portfolio` → portfolio.rectorspace.com
-- `rector-labs/labs` → labs.rectorspace.com
-- `rector-labs/cheatsheet` → cheatsheet.rectorspace.com
-- `rector-labs/dakwa` → dakwa.rectorspace.com
-- `rector-labs/quran` → quran.rectorspace.com
+- `RECTOR-LABS/homepage` 🌐 PUBLIC → rectorspace.com
+- `RECTOR-LABS/portfolio` 🌐 PUBLIC → portfolio.rectorspace.com
+- `RECTOR-LABS/labs` 🌐 PUBLIC → labs.rectorspace.com
+- `RECTOR-LABS/cheatsheet` 🌐 PUBLIC → cheatsheet.rectorspace.com
+- `RECTOR-LABS/dakwa` 🌐 PUBLIC → dakwa.rectorspace.com
+- `RECTOR-LABS/quran` 🌐 PUBLIC → quran.rectorspace.com
+
+**Visibility Strategy:**
+- **CORE:** 🔒 PRIVATE - Internal planning, strategies, full ecosystem docs
+- **Platforms:** 🌐 PUBLIC (default) or 🔒 PRIVATE based on project type
 
 ### 4.2 Infrastructure
 

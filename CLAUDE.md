@@ -16,15 +16,21 @@ This repo uses **git submodules** to manage 7 independent platform repositories:
 
 ```
 projects/
-├── homepage/          → RECTOR-LABS/homepage (not created yet)
-├── portfolio/         → RECTOR-LABS/portfolio (not created yet)
-├── labs/              → RECTOR-LABS/labs (not created yet)
-├── cheatsheet/        → RECTOR-LABS/cheatsheet (not created yet)
-├── dakwa/             → RECTOR-LABS/dakwa (not created yet)
-└── quran/             → RECTOR-LABS/quran (not created yet)
+├── homepage/          → RECTOR-LABS/homepage (PUBLIC - not created yet)
+├── portfolio/         → RECTOR-LABS/portfolio (PUBLIC - not created yet)
+├── labs/              → RECTOR-LABS/labs (PUBLIC - not created yet)
+├── cheatsheet/        → RECTOR-LABS/cheatsheet (PUBLIC - not created yet)
+├── dakwa/             → RECTOR-LABS/dakwa (PUBLIC - not created yet)
+└── quran/             → RECTOR-LABS/quran (PUBLIC - not created yet)
 ```
 
 Each platform will be a separate repository under RECTOR-LABS organization, linked here as submodules.
+
+**Repository Visibility Strategy:**
+- **CORE (this repo):** 🔒 PRIVATE - Contains planning, internal docs, full ecosystem view
+- **Platform repos:** 🌐 PUBLIC or 🔒 PRIVATE depending on project type:
+  - PUBLIC: Open source platforms, portfolio showcase, da'wah content
+  - PRIVATE: Proprietary features, early development, sensitive configs
 
 **Important:** See `docs/GIT_SUBMODULES_GUIDE.md` for complete workflow reference.
 
@@ -216,10 +222,12 @@ See global `~/.claude/CLAUDE.md` for complete list.
 ## Important Notes
 
 1. **This is a planning repo** - No application code exists yet in CORE
-2. **Submodules not yet created** - `projects/` is empty (planned Week 2+)
-3. **Documentation is source of truth** - Always refer to docs/ for decisions
-4. **VPS deployment later** - Infrastructure configs in `infrastructure/` for future use
-5. **Design system ready** - Colors and typography defined, components TBD
+2. **CORE is PRIVATE** - Contains internal planning, sensitive strategies, full ecosystem view
+3. **Submodules not yet created** - `projects/` is empty (planned Week 2+)
+4. **Platform visibility varies** - Public for showcase/open-source, private for proprietary work
+5. **Documentation is source of truth** - Always refer to docs/ for decisions
+6. **VPS deployment later** - Infrastructure configs in `infrastructure/` for future use
+7. **Design system ready** - Colors and typography defined, components TBD
 
 ---
 

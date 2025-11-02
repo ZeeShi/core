@@ -57,10 +57,12 @@
 
 ### 2.1 Monorepo + Submodules Strategy
 
-**Core Repository (rector-labs/core):**
+**Core Repository (RECTOR-LABS/core):**
+- 🔒 **PRIVATE** repository
 - Central planning and documentation
 - Shared design system and components
 - Infrastructure as Code
+- Internal strategies and sensitive configs
 - Git submodules pointing to individual projects
 
 **Individual Repositories:**
@@ -68,21 +70,27 @@ Each subdomain has its own repository under `RECTOR-LABS` organization:
 
 ```
 RECTOR-LABS/
-├── core                    (this repo - foundation)
-├── homepage                → rectorspace.com
-├── portfolio               → portfolio.rectorspace.com
-├── labs                    → labs.rectorspace.com
-├── cheatsheet              → cheatsheet.rectorspace.com
-├── dakwa                   → dakwa.rectorspace.com
-└── quran                   → quran.rectorspace.com
+├── core                    🔒 PRIVATE (this repo - foundation & planning)
+├── homepage                🌐 PUBLIC → rectorspace.com
+├── portfolio               🌐 PUBLIC → portfolio.rectorspace.com
+├── labs                    🌐 PUBLIC → labs.rectorspace.com
+├── cheatsheet              🌐 PUBLIC → cheatsheet.rectorspace.com
+├── dakwa                   🌐 PUBLIC → dakwa.rectorspace.com
+└── quran                   🌐 PUBLIC → quran.rectorspace.com
 ```
+
+**Repository Visibility Strategy:**
+- **CORE:** 🔒 PRIVATE - Contains comprehensive planning, internal docs, ecosystem overview
+- **Public Platforms:** 🌐 Portfolio showcase, open-source projects, da'wah content
+- **Private Platforms:** 🔒 Proprietary features, early development, sensitive business logic
 
 **Benefits:**
 - ✅ Independent development and deployment
 - ✅ Clear separation of concerns
-- ✅ Easy to showcase in portfolio
+- ✅ Easy to showcase in portfolio (public repos)
 - ✅ Flexible tech stack per project
-- ✅ Centralized planning via core repo
+- ✅ Centralized planning via core repo (private)
+- ✅ Control over what's public vs. proprietary
 
 ### 2.2 Core Repository Structure
 

@@ -21,17 +21,21 @@ This guide explains how RECTOR LABS uses git submodules to manage the ecosystem 
 **Structure:**
 ```
 RECTOR-LABS/
-├── core                    # This repo (parent)
+├── core                    # 🔒 PRIVATE - This repo (parent/orchestrator)
 │   └── projects/
-│       ├── homepage/       # Submodule → RECTOR-LABS/homepage
-│       ├── portfolio/      # Submodule → RECTOR-LABS/portfolio
-│       ├── labs/           # Submodule → RECTOR-LABS/labs
-│       ├── cheatsheet/     # Submodule → RECTOR-LABS/cheatsheet
-│       ├── dakwa/          # Submodule → RECTOR-LABS/dakwa
-│       └── quran/          # Submodule → RECTOR-LABS/quran
-├── homepage                # Standalone repo
-├── portfolio               # Standalone repo
+│       ├── homepage/       # Submodule → RECTOR-LABS/homepage (PUBLIC)
+│       ├── portfolio/      # Submodule → RECTOR-LABS/portfolio (PUBLIC)
+│       ├── labs/           # Submodule → RECTOR-LABS/labs (PUBLIC)
+│       ├── cheatsheet/     # Submodule → RECTOR-LABS/cheatsheet (PUBLIC)
+│       ├── dakwa/          # Submodule → RECTOR-LABS/dakwa (PUBLIC)
+│       └── quran/          # Submodule → RECTOR-LABS/quran (PUBLIC)
+├── homepage                # 🌐 PUBLIC - Standalone repo
+├── portfolio               # 🌐 PUBLIC - Standalone repo
 └── ...                     # Other standalone repos
+
+**Repository Visibility:**
+- CORE: 🔒 PRIVATE (internal planning, strategies, ecosystem overview)
+- Platforms: 🌐 PUBLIC (default) or 🔒 PRIVATE (case-by-case basis)
 ```
 
 ---
@@ -407,6 +411,12 @@ git spull            # Pull in all submodules
 - Each submodule repo should have clear README
 - Explain relationship to CORE in submodule docs
 
+✅ **Respect visibility boundaries:**
+- CORE is PRIVATE - contains internal planning and strategies
+- Public submodules: Showcase work, open-source, da'wah content
+- Private submodules: Proprietary features, early development
+- Never commit CORE-private info to public submodules
+
 ### 5.2 Don'ts
 
 ❌ **Don't make changes in submodule from CORE without committing:**
@@ -423,6 +433,11 @@ git spull            # Pull in all submodules
 
 ❌ **Don't use nested submodules:**
 - Keep structure flat (all submodules in `projects/`)
+
+❌ **Don't leak private information to public repos:**
+- Review code before pushing to public submodules
+- Keep sensitive configs, API keys, internal strategies in CORE only
+- Use environment variables for secrets in public repos
 
 ---
 
