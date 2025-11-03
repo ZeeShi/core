@@ -60,10 +60,14 @@ Thumbs.db
 # Playwright MCP screenshots
 .playwright-mcp/
 
-# Rails logs (keep directory structure)
-log/*.log
+# Rails logs (ignore all log files)
+/log/*
+!/log/.keep
 
-# Rails temporary files and cache
-tmp/cache/
-tmp/pids/*.pid
-tmp/sockets/
+# Rails temporary files and cache (ignore everything)
+/tmp/*
+!/tmp/.keep
+!/tmp/pids/.keep
+!/tmp/cache/.keep
+!/tmp/sockets/.keep
+!/tmp/storage/.keep
