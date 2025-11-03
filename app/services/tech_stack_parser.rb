@@ -3,13 +3,13 @@
 class TechStackParser
   # Language categorization based on usage patterns
   CATEGORIES = {
-    blockchain: ["Rust", "Solidity", "Move"],
-    web: ["JavaScript", "TypeScript", "HTML", "CSS", "SCSS"],
-    backend: ["Ruby", "Python", "Go", "Java", "Kotlin", "PHP"],
-    mobile: ["Swift", "Kotlin", "Dart"],
-    infra: ["Shell", "Dockerfile", "HCL"],
-    data: ["Python", "R", "Julia"],
-    systems: ["C", "C++", "Rust", "Go"]
+    blockchain: [ "Rust", "Solidity", "Move" ],
+    web: [ "JavaScript", "TypeScript", "HTML", "CSS", "SCSS" ],
+    backend: [ "Ruby", "Python", "Go", "Java", "Kotlin", "PHP" ],
+    mobile: [ "Swift", "Kotlin", "Dart" ],
+    infra: [ "Shell", "Dockerfile", "HCL" ],
+    data: [ "Python", "R", "Julia" ],
+    systems: [ "C", "C++", "Rust", "Go" ]
   }.freeze
 
   def initialize(repos = nil)
