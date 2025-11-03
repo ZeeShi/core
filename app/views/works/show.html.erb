@@ -44,7 +44,7 @@
       </div>
     </header>
 
-    <div class="story-content text-[#3B2C22] leading-relaxed">
+    <div class="story-content text-[#3B2C22]">
       <%= raw markdown(@work.story) %>
     </div>
   </article>
@@ -79,10 +79,13 @@
 
   /* Paragraphs - generous spacing for readability */
   .story-content p {
-    margin-bottom: 2rem !important;
-    line-height: 2;
-    font-size: 1.125rem;
-    text-align: justify;
+    margin-bottom: 3rem !important;
+    margin-top: 0 !important;
+    line-height: 2 !important;
+    font-size: 1.125rem !important;
+    text-align: justify !important;
+    text-align-last: left !important;
+    hyphens: auto;
   }
 
   /* Bold text in paragraphs - acts as mini section headers */
