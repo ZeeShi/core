@@ -4,231 +4,296 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-**RECTOR LABS CORE** is the central planning and orchestration hub for a 7-platform digital ecosystem. This is a **documentation and design system repository**, not application code. It contains comprehensive planning documents, brand guidelines, infrastructure configs, and will eventually coordinate individual platform repositories via git submodules.
+**RECTOR LABS CORE** is a Rails 8 monolithic application serving the complete rectorspace.com ecosystem. This is the single source of truth for all platform sections.
 
-**Status:** Foundation phase (Week 1) - Planning complete, platform development not yet started.
+**Current Status:** Architecture pivot from Next.js microservices to Rails monolith (2025-11-03). Clean slate for Rails implementation.
+
+**Tech Stack:** Ruby on Rails 8 (fullstack, hybrid) + Tailwind CSS v4
 
 ---
 
-## Key Concept: Submodule Architecture
+## The 7-Section Architecture
 
-This repo uses **git submodules** to manage 7 independent platform repositories:
+Single domain `rectorspace.com` with route-based sections:
+
+| Section | Route | Purpose | Status |
+|---------|-------|---------|--------|
+| Homepage | / | Identity hub & landing | ✅ Live |
+| Portfolio | /portfolio | Professional work showcase | 📋 Planned |
+| Labs | /labs | Experiments & learning projects | 📋 Planned |
+| Journal | /journal | Blog & writings (Ghost CMS integration) | 📋 Planned |
+| Cheatsheet | /cheatsheet | Dev reference & notes | 📋 Planned |
+| Dakwa | /dakwa | Islamic da'wah content | 📋 Planned |
+| Quran | /quran | Quranic resources & tools | 📋 Planned |
+
+**Architecture Decision:**
+- Rails monolith for unified codebase, shared authentication, single deployment
+- Route-based sections instead of separate apps/subdomains
+- Portfolio (polished professional work) separate from Labs (experiments/learning)
+- Ghost CMS as external service, integrated via API for Journal section
+
+---
+
+## Structure & Key Files
 
 ```
-projects/
-├── homepage/          → RECTOR-LABS/homepage (not created yet)
-├── portfolio/         → RECTOR-LABS/portfolio (not created yet)
-├── labs/              → RECTOR-LABS/labs (not created yet)
-├── cheatsheet/        → RECTOR-LABS/cheatsheet (not created yet)
-├── dakwa/             → RECTOR-LABS/dakwa (not created yet)
-└── quran/             → RECTOR-LABS/quran (not created yet)
+core/
+├── .github/workflows/       # GitHub Actions (Claude Code integration)
+├── app/
+│   ├── controllers/
+│   │   └── pages_controller.rb       # Homepage (✅ implemented)
+│   ├── models/
+│   │   └── github_repo.rb            # GitHub repository cache (✅ implemented)
+│   ├── views/
+│   │   ├── layouts/application.html.erb
+│   │   └── pages/home.html.erb       # Homepage view (✅ implemented)
+│   ├── jobs/
+│   │   └── sync_github_repos_job.rb  # Hourly GitHub sync (✅ implemented)
+│   └── services/
+│       ├── github_api_service.rb     # GitHub API client (✅ implemented)
+│       └── tech_stack_parser.rb      # Language parser (✅ implemented)
+├── config/
+│   ├── routes.rb                     # Root route configured
+│   └── recurring.yml                 # Solid Queue job schedule
+├── db/
+│   ├── migrate/                      # Database migrations
+│   └── schema.rb                     # Current schema
+├── lib/tasks/
+│   └── github.rake                   # Manual sync tasks (✅ implemented)
+├── assets/images/                    # Brand assets (3 logo variants + profile)
+├── docs/                             # Documentation
+│   ├── DESIGN_SYSTEM.md
+│   ├── PIXEL_ART_RESOURCES.md
+│   └── RAILS_INITIALIZATION_PLAN.md
+├── .env                              # Environment variables (gitignored)
+└── .env.example                      # Template for setup
 ```
 
-Each platform will be a separate repository under RECTOR-LABS organization, linked here as submodules.
-
-**Important:** See `docs/GIT_SUBMODULES_GUIDE.md` for complete workflow reference.
+**Branches:** `main` (protected) | `dev` (default) | `feature/*`
 
 ---
 
-## The 7-Platform Ecosystem
+## Design System
 
-| Platform | Domain | Purpose | Tech |
-|----------|--------|---------|------|
-| Homepage | rectorspace.com | Identity hub | Astro + Tailwind |
-| Portfolio | portfolio.rectorspace.com | GitHub-powered showcase | Next.js + GitHub API |
-| Labs | labs.rectorspace.com | Project showcase | Astro + Tailwind |
-| Journal | journal.rectorspace.com | Blog | Ghost CMS |
-| Cheatsheet | cheatsheet.rectorspace.com | Dev reference | Astro + Markdown |
-| Dakwa | dakwa.rectorspace.com | Islamic da'wah | Next.js + CMS |
-| Quran | quran.rectorspace.com | Quranic resources | Next.js + API |
+**Complete specification:** See `docs/DESIGN_SYSTEM.md`
 
----
+**Color Palette (NFT-inspired warm theme):**
+- Primary: Sky Blue `#41CFFF` (links), Warm Yellow `#F9C846` (accents)
+- Base: Soft Cream `#FFF7E1` (background), Deep Brown `#3B2C22` (text)
+- Supporting: Clay Orange `#E58C2E`, Leaf Green `#A8E063`, Muted Red `#C75A44`
 
-## Design System (Shared Across All Platforms)
+**Typography:** JetBrains Mono (full stack - headings, body, code)
+- Weights: 400 (body), 500 (emphasis), 600 (subheadings), 700 (headings)
+- Size: 18px body (monospace needs larger size for readability)
+- Line height: 1.75-1.875 (generous for comfort)
 
-**Brand Colors:**
-- **Gradient:** Turquoise (#5EDDC6) → Cyan (#4DD0E1) → Blue (#42A5F5)
-- **Backgrounds:** Dark Navy (#1A252F), Navy (#2C3E50)
-- **Full palette:** `design-system/colors.json`
+**Layout Philosophy:**
+- DHH.dk inspired: Minimal navigation, letter-style narrative, embedded links
+- Basecamp inspired: Generous whitespace, conversational tone, calm spacing
+- No navbar/footer/sidebar - links integrated naturally in text
+- Profile picture (NFT): 150px rounded circle, centered, subtle shadow
 
-**Typography:**
-- **Headings:** Space Grotesk (500/600/700)
-- **Body:** Inter (300/400/500/600/700)
-- **Code:** JetBrains Mono (400/500/700)
-- **Full scale:** `design-system/typography.json`
-
-**Component Location:** `design-system/components/` (future UI components)
+**Visual Style:**
+- Light/warm theme only (no dark mode)
+- Pixel art graphics from Kenney.nl/itch.io (see `docs/PIXEL_ART_RESOURCES.md`)
+- Clean, minimal, content-focused
+- Anonymous identity via NFT profile picture
 
 ---
 
-## Essential Documentation
+## Rails Development Workflow
 
-**Must-read for context:**
-1. **`docs/PRD.md`** - Complete product requirements (15k+ words)
-2. **`docs/ARCHITECTURE.md`** - VPS infrastructure, deployment strategy
-3. **`docs/BRAND_GUIDELINES.md`** - Visual identity rules
-4. **`docs/IMPLEMENTATION_PLAN.md`** - Task tracking (Epic/Story/Task structure)
+**Prerequisites:**
+- Ruby 3.3+ (use rbenv or asdf)
+- Rails 8
+- PostgreSQL (recommended) or SQLite (development)
+- Node.js 18+ (for asset pipeline)
 
-**Quick reference:**
-- **Git Submodules:** `docs/GIT_SUBMODULES_GUIDE.md`
-- **README.md:** Overview and quick start
+**Common Commands:**
+```bash
+# Start development server
+bin/rails server
+# or use foreman (runs web + css watcher)
+bin/dev
+
+# Run console
+bin/rails console
+
+# Database setup
+bin/rails db:create db:migrate db:seed
+
+# GitHub integration
+bin/rails github:sync           # Manually sync repos from GitHub
+bin/rails github:tech_stack     # Show tech stack summary
+
+# Run tests
+bin/rails test
+
+# Generate scaffolds
+bin/rails generate controller Portfolio index show
+bin/rails generate model Project title:string description:text
+```
+
+**Running the App:**
+```bash
+# First time setup
+bundle install
+cp .env.example .env          # Then add your GitHub token
+bin/rails db:setup
+bin/rails github:sync         # Initial sync of repos
+
+# Start server
+bin/rails server
+# Visit http://localhost:3000
+```
 
 ---
 
-## Philosophy & Context
+## Deployment Strategy
 
-**"Building for Eternity"** - Core principle integrating:
-- **Dunya (Worldly):** Technical excellence, professional portfolio
-- **Akhirah (Afterlife):** Islamic da'wah platforms (dakwa, quran subdomains)
+**VPS Deployment:**
+- Single Rails app deployment (Nginx + Puma/Passenger)
+- 1 user account per deployment environment (staging/production)
+- PostgreSQL database
+- Let's Encrypt SSL for rectorspace.com
+- GitHub Actions CI/CD
+- SSH via `~/.ssh/config`
+
+**Environment Variables:**
+- Ghost CMS API credentials
+- Database connection strings
+- External API keys (GitHub API, Quran API)
+
+**Security:** Never commit `.env`, use Rails credentials (encrypted)
+
+---
+
+## External Integrations
+
+**Journal Section:**
+- Ghost CMS hosted separately (journal subdomain or external)
+- Integrate via Ghost Content API
+- Fetch posts and display in `/journal` route
+- Consider caching strategy for performance
+
+**Portfolio Section:**
+- GitHub API integration for repository showcase
+- Display pinned repos, contribution stats
+
+**Quran Section:**
+- Integrate Quran API (quran.com API or similar)
+- Tafsir, translations, recitations
+
+---
+
+## Philosophy
+
+**"Building for Eternity"** - Integrating dunya (technical excellence, portfolio) with akhirah (da'wah platforms: dakwa, quran).
 
 **Islamic Values:**
-- Ihsan (Excellence) - Strive for perfection
-- Amanah (Trust) - Treat code as responsibility
-- Avoid Israf (Waste) - Clean, efficient code
+- **Ihsan (Excellence):** 100% working standard, quality over urgency
+- **Amanah (Trust):** Treat code as sacred responsibility, document thoroughly
+- **Avoid Israf (Waste):** Efficient, clean code, minimal dependencies
 
-**Development Approach:**
-- Ship with excellence (100% working standard)
-- Quality over urgency
-- Independent builder philosophy
+**Islamic Expressions (1-2 per interaction):** Bismillah (beginning), Alhamdulillah (success), InshaAllah (future), MashaAllah (admiration). See `~/.claude/CLAUDE.md`.
 
 ---
 
-## Infrastructure Design (Future Deployment)
+## Best Practices
 
-**VPS Strategy:**
-- **Isolation:** 1 user account per platform on VPS
-- **Reverse Proxy:** Nginx routes all subdomains
-- **SSL:** Let's Encrypt (automated)
-- **Process Management:** PM2 (Node.js), systemd (Ghost)
-- **Ports:** See `docs/ARCHITECTURE.md` Appendix 13.1
+**For Claude Code:**
+1. Read this CLAUDE.md first, check branch (`git branch`), understand Rails conventions
+2. Follow Rails MVC patterns and conventions
+3. Survey docs before creating new `.md` files - propose organization first
+4. Work in `dev` branch, never commit directly to `main`
+5. Update this CLAUDE.md if architecture changes
+6. Use Rails generators when appropriate
+7. Write tests for new features (RSpec or Minitest)
 
-**CI/CD:** GitHub Actions auto-deploy on push to `main`
+**Commit Format:** `<type>: <description>` (feat/fix/docs/refactor/chore/test)
 
 ---
 
-## Common Workflows
+## Quick Commands
 
-### Create New Platform Repository
+**Development:**
 ```bash
-# Use custom slash command
-/init:repo-rector-labs <platform-name> "<description>"
-
-# Add as submodule to CORE
-cd /path/to/core
-git submodule add git@github.com:RECTOR-LABS/<platform-name>.git projects/<platform-name>
-git add .gitmodules projects/<platform-name>
-git commit -m "Add <platform-name> as submodule"
-git push origin dev
+bin/rails server          # Start dev server (port 3000)
+bin/rails console         # Interactive console
+bin/rails routes          # Show all routes
+bin/rails db:migrate      # Run migrations
+bin/rails test            # Run test suite
 ```
 
-### Update Submodules
+**Troubleshooting:**
 ```bash
-# Update all to latest
-git submodule update --remote --merge
-
-# Update specific platform
-git submodule update --remote --merge projects/homepage
-```
-
-### Work on Platform Code
-```bash
-# Navigate to submodule
-cd projects/homepage
-
-# Work normally (create branch, commit, push)
-git checkout -b feature/new-section
-# ... make changes ...
-git commit -m "Add hero section"
-git push origin feature/new-section
-
-# Update CORE reference after merge
-cd /path/to/core
-git submodule update --remote --merge projects/homepage
-git add projects/homepage
-git commit -m "Update homepage to latest"
+# Reset database: bin/rails db:reset
+# Clear cache: bin/rails tmp:clear
+# Bundle issues: bundle install --full-index
+# Asset issues: bin/rails assets:clobber && bin/rails assets:precompile
 ```
 
 ---
 
-## Branch Strategy
+## GitHub Integration
 
-- **`main`:** Production-ready code (protected)
-- **`dev`:** Active development (current default)
-- **`feature/*`:** Feature branches (merge to dev)
+**Implemented Features (Homepage):**
+- Dynamic project showcase from GitHub API
+- Automatic caching with PostgreSQL database
+- Hourly background sync via Solid Queue
+- Tech stack parser with language categorization
+- Manual sync via rake tasks
 
----
+**Architecture:**
+```
+GitHub API → GithubApiService → GithubRepo (model/cache) → PagesController → Homepage View
+                ↓
+           SyncGithubReposJob (hourly)
+                ↓
+           TechStackParser (categorizes languages)
+```
 
-## Project Status Tracking
+**Data Flow:**
+1. `SyncGithubReposJob` runs every hour (configured in `config/recurring.yml`)
+2. Fetches repos from `rz1989s` (personal) and `RECTOR-LABS` (organization)
+3. Stores in `github_repos` table with metadata (name, description, language, pushed_at, etc.)
+4. `TechStackParser` analyzes all non-fork repos and categorizes by language
+5. Homepage displays 6 latest repos + tech stack summary
 
-**Live tracker:** `docs/IMPLEMENTATION_PLAN.md`
+**Current Stats:**
+- 35 total repositories cached (24 personal + 11 organization)
+- 18 non-fork repositories
+- Primary stack: TypeScript (44.4%), Shell (16.7%), JavaScript, Rust, Python
+- Categories: blockchain, web, backend, infra, data, systems
 
-**Current phase:** Foundation (Week 1) ✅ Complete
-- Planning documentation: 15,000+ words
-- Design system defined
-- Infrastructure designed
-- Git repository initialized
+**Environment Variables:**
+```bash
+# .env (gitignored)
+GITHUB_TOKEN=ghp_xxx...   # Personal access token
+```
 
-**Next phase:** Infrastructure & Homepage (Week 2)
+**Benefits:**
+- Rate limit: 5,000 requests/hour (vs 60 without token)
+- Scope: `public_repo` (read-only public repositories)
 
----
-
-## Key Files to Update
-
-When making significant changes:
-1. **`docs/IMPLEMENTATION_PLAN.md`** - Update task status, progress
-2. **`CLAUDE.md`** (this file) - If architecture or workflows change
-3. **`README.md`** - If repo status changes
-
----
-
-## Technology Stack
-
-**Current (CORE repo):**
-- No build process - documentation and config only
-- Git submodules for orchestration
-
-**Future platforms:**
-- Static sites: Astro + Tailwind CSS
-- Dynamic sites: Next.js + Tailwind CSS
-- CMS: Ghost (self-hosted)
-- APIs: GitHub API, Quran API
-
----
-
-## Islamic Expressions Usage
-
-Natural integration of Islamic terms (1-2 per interaction):
-- **Bismillah** - Beginning tasks
-- **Alhamdulillah** - Gratitude
-- **InshaAllah** - Future plans
-- **MashaAllah** - Admiration
-- **Barakallahu feek** - Blessing
-
-See global `~/.claude/CLAUDE.md` for complete list.
+**Manual Commands:**
+```bash
+bin/rails github:sync          # Sync repos now
+bin/rails github:tech_stack    # Show tech stack summary
+```
 
 ---
 
-## Important Notes
+## Resources
 
-1. **This is a planning repo** - No application code exists yet in CORE
-2. **Submodules not yet created** - `projects/` is empty (planned Week 2+)
-3. **Documentation is source of truth** - Always refer to docs/ for decisions
-4. **VPS deployment later** - Infrastructure configs in `infrastructure/` for future use
-5. **Design system ready** - Colors and typography defined, components TBD
+**Docs:** [Rails Guides](https://guides.rubyonrails.org) | [Tailwind CSS](https://tailwindcss.com/docs) | [Ghost API](https://ghost.org/docs/content-api/)
 
----
+**Links:** [@rz1989s](https://github.com/rz1989s) | [RECTOR-LABS](https://github.com/RECTOR-LABS) | rectorspace.com _(coming soon)_
 
-## Next Actions (Week 2)
-
-1. Create homepage repository
-2. Add homepage as first submodule
-3. Build design system components (Button, Card, Header, Footer)
-4. Document VPS infrastructure setup
-5. Create homepage prototype
+**Maintainer:** RECTOR | **Updated:** 2025-11-03 | **Version:** 3.0 (Rails Monolith)
 
 ---
 
-**Maintained by:** RECTOR
-**Last Updated:** 2025-11-02
-**Organization:** [RECTOR-LABS](https://github.com/RECTOR-LABS)
-**Website:** https://rectorspace.com (coming soon)
+**May Allah bless this work and make it beneficial. Aamiin.**
+
+**RECTOR LABS** | Building for Eternity | 2025

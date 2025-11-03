@@ -49,3 +49,25 @@ Thumbs.db
 .cache/
 .parcel-cache/
 .turbo/
+
+# Ignore key files for decrypting credentials and more.
+/config/*.key
+
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+# Playwright MCP screenshots
+.playwright-mcp/
+
+# Rails logs (ignore all log files)
+/log/*
+!/log/.keep
+
+# Rails temporary files and cache (ignore everything)
+/tmp/*
+!/tmp/.keep
+!/tmp/pids/.keep
+!/tmp/cache/.keep
+!/tmp/sockets/.keep
+!/tmp/storage/.keep
