@@ -4,112 +4,109 @@
 
 puts "Seeding database..."
 
-# CORE work story
+# CORE work story (Enhanced with SEO links)
 core_story = <<~MARKDOWN
   # CORE: When I Stopped Overthinking Everything
 
-  Real talk - I had this whole grand plan. Seven different projects, seven repos, microservices architecture, Docker containers, Kubernetes, the works. Was gonna build this whole ecosystem for rectorspace.com with Next.js for the frontend, separate Node backends, maybe throw in some Rust microservices because why not, right?
+  Look, I had this whole grand plan. Seven different projects, seven separate repos, microservices architecture, Docker containers, the whole nine yards. Was gonna build this massive ecosystem for rectorspace.com with [Next.js](https://nextjs.org) frontends, [Node](https://nodejs.org) backends, maybe throw in some [Rust](https://www.rust-lang.org) services because why not, right?
 
-  And then one Saturday morning, I'm sitting there with my third cup of coffee, staring at my whiteboard covered in architecture diagrams, and I'm like... wait. Why am I doing this to myself?
+  Then one Saturday morning, I'm on my third cup of coffee, staring at my whiteboard covered in architecture diagrams, and I just... stopped. Wait. Why am I doing this to myself?
 
-  Here's the thing about being a developer. We love to overcomplicate stuff. It's like a disease. Someone says "I need a website" and we're already planning the distributed system with event sourcing and CQRS. Meanwhile, Rails exists. Rails 8 specifically. And I'd been sleeping on it.
+  **The Realization**
 
-  So I made a decision that felt kinda blasphemous for someone who's been doing TypeScript and Solana work. I deleted everything and typed `rails new core`. Just like that. Two days ago, actually. November 2nd, 2025. Bismillah.
+  Here's the thing about being a developer - we love to overcomplicate stuff. It's like a disease. Someone says "I need a website" and we're already architecting a distributed system with event sourcing. Meanwhile, [Rails](https://rubyonrails.org) exists. Rails 8, specifically. And I'd been completely sleeping on it.
 
-  **The Bet**
+  So I made a decision that felt kinda blasphemous for someone who's been neck-deep in [TypeScript](https://www.typescriptlang.org) and [Solana](https://solana.com). I deleted everything. Well, archived it. Then typed `rails new core`. Just like that. November 2nd, 2025. Bismillah, let's start fresh.
 
-  I gave myself a challenge: can I ship a production-ready platform in one weekend? Not a prototype. Not an MVP. Production. With SSL, proper deployment, GitHub Actions CI/CD, the works. And it had to actually look good - none of that "I'll design it later" Bootstrap nonsense.
+  **The Weekend Challenge**
 
-  Spoiler: kind of did it. With a bunch of bugs along the way, but hey, that's the fun part.
+  I gave myself a stupid challenge: can I ship a production-ready platform in one weekend? Not a prototype. Not an "MVP". Actual production. With SSL, proper deployment, [GitHub Actions](https://docs.github.com/actions) CI/CD, zero-downtime updates, the works. And it had to look good - none of that "I'll design it later" Bootstrap nonsense.
 
-  **Why Rails? (The Honest Version)**
+  Spoiler alert: I kind of did it. With a lot of bugs along the way. But honestly? That's the fun part.
 
-  Look, I could give you the technical reasons. Monolithic architecture, convention over configuration, mature ecosystem, all that. But real reason? I was tired of config files. So. Tired.
+  **Why Rails? (The Real Reason)**
 
-  With my previous setup, I had:
-  - 7 different repos to maintain
-  - Different package.json files
-  - Separate deployment pipelines
-  - Database connections between services
-  - API versioning headaches
-  - "Which port is this running on again?" moments
+  I could give you all the technical reasons. Monolithic architecture, convention over configuration, mature ecosystem, blah blah. But real talk? I was tired of config files. So. Tired.
 
-  Rails? One repo. One deployment. Database migrations that actually work. Background jobs built-in (Solid Queue is amazing btw). It just... works. And after spending months in blockchain dev where nothing works the first time, that's refreshing.
+  With my previous setup I had seven different repos to juggle. Seven package.json files. Separate deployment pipelines. Database connections between services. API versioning headaches. Those "wait which port is this service running on again?" moments at 2am.
 
-  Plus, Rails 8 came out with all these new goodies. Solid Queue for background jobs, Solid Cache, authentication generators. It's like DHH looked at what we were doing with external services and said "nah, let's just include it."
+  Rails? One repo. One deployment. Database migrations that actually work. Background jobs built-in with [Solid Queue](https://github.com/rails/solid_queue). It just... works. And after spending months in blockchain dev where nothing works the first time, that's refreshing as hell.
 
-  **The Design Thing**
+  Plus Rails 8 dropped with all these new toys. Solid Queue for background jobs. [Solid Cache](https://github.com/rails/solid_cache). Authentication generators. DHH basically looked at what everyone was doing with external services and said "nah, let's just include it in the box."
 
-  Here's where it got interesting. I have this MonkeDAO NFT as my profile pic - pixel art monkey with this warm color palette. Orange, yellow, cream, brown. And I thought... what if the whole site matched that vibe?
+  **The Design Journey**
 
-  So I grabbed Tailwind CSS v4 (because of course), pulled the colors from my NFT, and built this whole warm, pixel-art-inspired design system. JetBrains Mono for everything - yes, even the body text. It's monospace. It's a bit unusual. I don't care, it looks cool and screams "developer made this."
+  This is where it got interesting. I have this MonkeDAO NFT as my profile pic - pixel art monkey with this warm color palette. Orange, yellow, cream, brown. And I thought... what if the whole site matched that vibe?
 
-  The layout is inspired by DHH's personal site - minimal nav, letter-style content, just text and links flowing naturally. None of that corporate navbar/sidebar/footer stuff. Just... content. The way blogs used to be before everyone decided they needed to look like SaaS products.
+  So I grabbed [Tailwind CSS](https://tailwindcss.com) v4, pulled the hex codes straight from my NFT, and built this whole warm pixel-art-inspired design system. [JetBrains Mono](https://www.jetbrains.com/lp/mono/) for everything. Yes, even body text. It's monospace. It's weird. I don't care, it looks cool and screams "developer made this."
 
-  **The 48-Hour Sprint**
+  The layout's inspired by DHH's personal site - super minimal, letter-style content, links flowing naturally in text. No corporate navbar. No sidebar. No footer bloat. Just... content. The way personal sites used to be before everyone decided they needed to look like SaaS products.
 
-  Friday night: Set up Rails, configure PostgreSQL, pick the color scheme. Got the homepage working around 2am.
+  **The 48-Hour Build Sprint**
 
-  Saturday: This is where it got messy. Built the GitHub API integration to show my projects dynamically. Wrote a background job that syncs my repos every hour. Set up Tailwind with custom colors. Made like 15 commits just fixing CSS spacing lol.
+  Friday night: Rails setup, [PostgreSQL](https://www.postgresql.org) config, color scheme locked in. Homepage working around 2am.
 
-  Then came deployment. Set up a VPS, configured Nginx, got SSL working with Let's Encrypt. Puma kept crashing because I forgot Unix sockets exist. Fixed that at 3am. Then SECRET_KEY_BASE wasn't loading. Then Ruby version mismatch. Then... you get the idea.
+  Saturday: This got messy. Built GitHub API integration to show projects dynamically. Wrote a background job that syncs my repos every hour. Solid Queue made this stupidly easy. Set up Tailwind with custom colors. Made probably 15 commits just fixing CSS spacing lol.
 
-  Sunday morning: Alhamdulillah, it's live. rectorspace.com points to a actual working Rails app. The version footer shows which commit is running in production. GitHub Actions automatically deploys when I push to main. It's not perfect but it's real.
+  Then came deployment hell. Set up a VPS. Configured [Nginx](https://nginx.org). Got SSL working with Let's Encrypt. [Puma](https://puma.io) kept crashing. Why? Because I forgot Unix sockets exist. Fixed that at 3am. Then SECRET_KEY_BASE wasn't loading properly. Then Ruby version mismatch between local and production. Then... you know how it goes.
 
-  **The Seven Sections** (Most Don't Exist Yet lol)
+  Sunday morning: Alhamdulillah, it's live. rectorspace.com actually points to a real Rails app. The version footer shows which commit is running. GitHub Actions automatically deploys when I push to main. It's not perfect but it's real.
 
-  The plan is seven sections under one domain:
-  - Homepage (✅ live)
-  - Work (📋 building this now actually)
-  - Labs (📋 for experiments)
-  - Journal (📋 Ghost CMS integration)
-  - Cheatsheet (📋 dev notes)
-  - Dakwa (📋 Islamic content)
-  - Quran (📋 Quranic resources)
+  **The Seven Sections (Most Don't Exist Yet)**
 
-  Yeah, only homepage works right now. But that's fine! Ship first, build second. The infrastructure is solid. Adding new sections is just controllers and views.
+  The vision is seven sections under one domain. Right now only two work:
 
-  **What I Learned** (The Real Stuff)
+  - Homepage (✅ live) - introduction, GitHub projects feed
+  - Work (✅ live) - story-driven project pages like this one
+  - Labs (📋 planned) - experiments and learning projects
+  - Journal (📋 planned) - Ghost CMS integration for writing
+  - Cheatsheet (📋 planned) - dev notes and references
+  - Dakwa (📋 planned) - Islamic da'wah content
+  - Quran (📋 planned) - Quranic resources and tools
 
-  1. **Monoliths aren't evil.** Microservices are great when you need them. For a solo developer building multiple related things? Monolith wins.
+  Yeah, only homepage and work are done. But that's fine! Ship first, build second. The infrastructure is rock solid. Adding new sections is just controllers and views now.
 
-  2. **Rails is still good.** Really good. The "Rails is dead" people don't know what they're talking about. Rails 8 feels modern and fast.
+  **What I Actually Learned**
 
-  3. **Ship broken things.** I deployed with bugs. Fixed them in production. It's fine. Perfect is the enemy of done.
+  Monoliths aren't evil. Microservices are great when you need them. For a solo developer building related things? Monolith wins every single time.
 
-  4. **Design matters but don't overthink it.** I spent 3 hours tweaking colors. Was it worth it? Maybe. But it makes me happy to look at it, so yeah.
+  Rails is still really good. Like, really really good. Everyone saying "Rails is dead" clearly hasn't used Rails 8. It feels modern and fast and just... works.
 
-  5. **Use boring technology.** PostgreSQL, Nginx, Puma, Rails - all boring, all battle-tested, all just work. Saved me so much debugging time.
+  Ship broken things. I deployed with bugs. Fixed them in production. It's fine. Nobody died. Perfect is the enemy of done.
 
-  **Where It's Going**
+  Design matters but don't overthink it. I spent 3 hours tweaking colors. Worth it? Maybe. But it makes me happy to look at it, so yeah.
 
-  Right now I'm building the /work section with story-driven project pages. Not just "here's my projects" but actual narratives. Why they exist, what I learned, the messy parts. Because boring portfolios are... boring.
+  Use boring technology. PostgreSQL, Nginx, Puma, Rails - all boring, all battle-tested, all just work. Saved me countless hours of debugging weird edge cases.
 
-  Then Labs for experiments. Then Ghost CMS integration for writing. Then the Islamic sections because building for eternity means building for dunya AND akhirah, you know?
+  **What's Next**
 
-  The repo is public now (just made it public today actually). So you can see all the commits, all the fixes, all the "wait why did I do it that way" moments. Real code, real mess, real progress.
+  Right now I'm building out the work section you're reading. Story-driven project pages instead of boring portfolios. Why they exist, what I learned, the messy parts. Because nobody remembers another bulleted list of features.
+
+  Then Labs for experiments. Then Ghost CMS integration for actual writing. Then the Islamic content sections because building for eternity means building for dunya AND akhirah.
+
+  The repo went public today. So you can see all the commits, all the fixes, all the "wait why did I do it that way" moments. Real code, real progress, real mess.
 
   **The Philosophy**
 
-  There's this thing in Islam called "ihsan" - excellence in everything you do. Not perfection. Excellence. Doing your best work because Allah is watching. That's what this is about.
+  There's this concept in Islam called ihsan - excellence in everything you do. Not perfection. Excellence. Doing your best work because Allah is watching. That's what this is about.
 
-  Not trying to build a unicorn startup. Not chasing VC funding. Just building something useful, something beautiful, something that serves both my worldly goals and my faith. "Building for Eternity" isn't a tagline - it's literally the mission.
+  Not trying to build the next unicorn. Not chasing VC money. Just building something useful, something beautiful, something that serves both worldly goals and faith. "Building for Eternity" isn't a marketing slogan - it's the actual mission.
 
-  Will people use it? Maybe. Will it make money? Not the priority. Will it be something I'm proud of in 10 years? InshaAllah, yes. That's enough.
+  Will it make money? Not the priority. Will people use it? Maybe. Will I be proud of it in 10 years? InshaAllah, yes. And that's enough.
 
-  So yeah. That's CORE. Two days old. Already in production. Lots of placeholder sections. Even more bugs probably. But it's mine, it's real, and it's just getting started.
+  So yeah. That's CORE. Three days old. Two sections working. Probably a dozen bugs I haven't found yet. But it's mine, it's real, and it's just getting started.
 
-  And if you're wondering whether you should build that thing you've been planning for months - yes. Stop planning. Just build it. You can refactor later.
+  And if you're sitting there planning that thing you've been thinking about for months - stop planning. Just build it. Rails new your-project-name. Ship first, refactor later.
 
   ---
 
-  **Tech Stack:** Ruby on Rails 8, PostgreSQL, Tailwind CSS v4, Nginx, Puma
+  **Tech Stack:** Ruby on Rails 8, PostgreSQL, Tailwind CSS v4, Nginx, Puma, Solid Queue
 
   **Status:** Live in production (with bugs, naturally)
 
   **Links:** [GitHub](https://github.com/RECTOR-LABS/core) • [Live Site](https://rectorspace.com)
 
-  **Timeline:** Started Nov 2, 2025 • Deployed Nov 3, 2025 • Still actively building
+  **Timeline:** Started Nov 2, 2025 • Deployed Nov 3, 2025 • Actively building
 MARKDOWN
 
 work = Work.find_or_initialize_by(slug: "core")
@@ -122,7 +119,7 @@ work.assign_attributes(
   summary: "Rails 8 monolith for the complete rectorspace.com ecosystem - built in one weekend to prove monoliths aren't dead",
   category: "Infrastructure",
   status: "Live",
-  technologies: [ "Ruby", "Rails 8", "PostgreSQL", "Tailwind CSS", "Nginx", "Puma" ],
+  technologies: [ "Ruby", "Rails 8", "PostgreSQL", "Tailwind CSS", "Nginx", "Puma", "Solid Queue" ],
   started_at: Date.parse("2025-11-02"),
   launched_at: Date.parse("2025-11-03"),
   featured: true,
