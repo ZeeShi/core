@@ -1,0 +1,73 @@
+<div class="container-homepage">
+
+  <!-- NFT Profile Picture -->
+  <%= image_tag "rector_profile_image.png", alt: "RECTOR", class: "profile-picture" %>
+
+  <!-- Introduction / Letter -->
+  <div class="space-y-6">
+    <p>
+      Assalamu'alaikum! I'm RECTOR.
+    </p>
+
+    <p>
+      I build things for the web using Rails and Tailwind.
+      I chase hackathons, write about code, and share beneficial knowledge.
+      Muslim builder working on projects that matter for dunya and akhirah.
+    </p>
+
+    <p>
+      Right now I'm working on building this space.
+      You can explore my <%= link_to "portfolio", "#" %>,
+      peek at <%= link_to "labs", "#" %> experiments,
+      read my <%= link_to "journal", "#" %>,
+      or browse my <%= link_to "cheatsheet", "#" %>.
+    </p>
+  </div>
+
+  <!-- Section Divider -->
+  <hr class="section-divider" />
+
+  <!-- Building in Public Section -->
+  <section>
+    <h2>## Building in Public</h2>
+    <p class="mt-4 mb-2">
+      <strong>Latest from Labs:</strong>
+      <%= link_to "RECTOR LABS CORE - Rails Monolith", "#" %>
+    </p>
+    <p>
+      Pivoting from Next.js microservices to Rails 8 monolith.
+      One domain, one codebase, 7 sections. Warm design inspired by my NFT profile.
+      Building with Ihsan (excellence), Amanah (trust), and avoiding Israf (waste).
+    </p>
+  </section>
+
+  <!-- Divider -->
+  <hr class="section-divider" />
+
+  <!-- Writing Section -->
+  <section>
+    <h2>## Writing</h2>
+    <p class="mt-4 mb-2">
+      <strong>Latest article:</strong>
+      <%= link_to "Coming Soon", "#" %>
+    </p>
+    <p>
+      Journal section powered by Ghost CMS, integrated via API.
+      Articles about code, faith, and building for eternity.
+    </p>
+  </section>
+
+  <!-- Divider -->
+  <hr class="section-divider" />
+
+  <!-- Get in Touch -->
+  <section>
+    <h2>## Get in Touch</h2>
+    <p class="mt-4">
+      <%= link_to "GitHub", "https://github.com/rz1989s", target: "_blank", rel: "noopener" %> •
+      <%= link_to "X", "https://x.com/yourusername", target: "_blank", rel: "noopener" %> •
+      <%= link_to "Email", "mailto:your@email.com" %>
+    </p>
+  </section>
+
+</div>

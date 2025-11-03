@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* RECTOR LABS - NFT-Inspired Color Palette */
+  --color-cream: #FFF7E1;
+  --color-brown: #3B2C22;
+  --color-sky-blue: #41CFFF;
+  --color-yellow: #F9C846;
+  --color-orange: #E58C2E;
+  --color-green: #A8E063;
+  --color-red: #C75A44;
+
+  /* Font Family */
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+@layer base {
+  body {
+    @apply font-mono text-brown bg-cream text-lg leading-relaxed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mono font-bold text-brown;
+  }
+
+  h1 { @apply text-4xl leading-tight; }
+  h2 { @apply text-3xl leading-tight; }
+  h3 { @apply text-2xl leading-normal; }
+  h4 { @apply text-xl leading-normal; }
+
+  a {
+    @apply text-sky-blue underline transition-colors duration-200;
+  }
+
+  a:hover {
+    @apply text-yellow;
+  }
+
+  code {
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  .container-homepage {
+    @apply max-w-2xl mx-auto px-6 py-12;
+  }
+
+  .profile-picture {
+    @apply w-[150px] h-[150px] rounded-full mx-auto mb-8;
+    box-shadow: 0 4px 12px rgba(199, 90, 68, 0.2);
+  }
+
+  .section-divider {
+    @apply border-t-2 border-yellow my-12;
+  }
+
+  .code-inline {
+    @apply bg-brown text-cream px-1.5 py-0.5 rounded text-[15px];
+  }
+
+  .code-block {
+    @apply bg-brown text-cream p-6 rounded-lg overflow-x-auto my-6 text-[15px] leading-relaxed;
+  }
+}

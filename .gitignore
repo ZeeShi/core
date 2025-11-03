@@ -49,3 +49,10 @@ Thumbs.db
 .cache/
 .parcel-cache/
 .turbo/
+
+# Ignore key files for decrypting credentials and more.
+/config/*.key
+
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
