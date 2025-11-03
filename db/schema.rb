@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_03_073015) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_03_144206) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -33,5 +33,25 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_03_073015) do
     t.index ["account"], name: "index_github_repos_on_account"
     t.index ["full_name"], name: "index_github_repos_on_full_name", unique: true
     t.index ["pushed_at"], name: "index_github_repos_on_pushed_at"
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.boolean "featured"
+    t.integer "github_forks"
+    t.integer "github_stars"
+    t.string "github_url"
+    t.date "launched_at"
+    t.string "live_url"
+    t.string "repo_name"
+    t.string "slug"
+    t.date "started_at"
+    t.string "status"
+    t.text "story"
+    t.text "summary"
+    t.json "technologies"
+    t.string "title"
+    t.datetime "updated_at", null: false
   end
 end

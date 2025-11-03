@@ -1,0 +1,73 @@
+<div class="max-w-4xl mx-auto px-6 py-12">
+  <div class="mb-12">
+    <h1 class="text-4xl font-bold mb-4 text-[#3B2C22]">Work</h1>
+    <p class="text-lg leading-relaxed text-[#3B2C22]/80">
+      Projects I've built, problems I've solved, and stories worth telling.
+    </p>
+  </div>
+
+  <% if @featured_works.any? %>
+    <div class="mb-16">
+      <h2 class="text-2xl font-semibold mb-6 text-[#3B2C22]">Featured</h2>
+      <div class="space-y-6">
+        <% @featured_works.each do |work| %>
+          <%= link_to work_path(work), class: "block group" do %>
+            <div class="bg-white border-2 border-[#3B2C22]/10 rounded-lg p-6 hover:border-[#41CFFF] transition-colors">
+              <div class="flex items-start justify-between mb-3">
+                <h3 class="text-2xl font-semibold text-[#3B2C22] group-hover:text-[#41CFFF] transition-colors">
+                  <%= work.title %>
+                </h3>
+                <% if work.status == "Live" %>
+                  <span class="px-3 py-1 bg-[#A8E063] text-[#3B2C22] text-sm font-medium rounded">Live</span>
+                <% end %>
+              </div>
+              <p class="text-[#3B2C22]/70 leading-relaxed mb-4">
+                <%= work.summary %>
+              </p>
+              <div class="flex items-center gap-4 text-sm text-[#3B2C22]/60">
+                <span><%= work.category %></span>
+                <% if work.technologies.present? %>
+                  <span>•</span>
+                  <span><%= work.technologies.first(3).join(", ") %></span>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @works.where.not(featured: true).any? %>
+    <div>
+      <h2 class="text-2xl font-semibold mb-6 text-[#3B2C22]">All Projects</h2>
+      <div class="space-y-4">
+        <% @works.where.not(featured: true).each do |work| %>
+          <%= link_to work_path(work), class: "block group" do %>
+            <div class="bg-white border-2 border-[#3B2C22]/10 rounded-lg p-5 hover:border-[#41CFFF] transition-colors">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="text-xl font-semibold text-[#3B2C22] group-hover:text-[#41CFFF] transition-colors">
+                  <%= work.title %>
+                </h3>
+                <% if work.status %>
+                  <span class="px-2 py-1 bg-[#3B2C22]/5 text-[#3B2C22] text-xs font-medium rounded">
+                    <%= work.status %>
+                  </span>
+                <% end %>
+              </div>
+              <p class="text-[#3B2C22]/70 text-sm leading-relaxed">
+                <%= work.summary %>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @works.empty? %>
+    <div class="text-center py-12">
+      <p class="text-[#3B2C22]/50">No work published yet. Check back soon!</p>
+    </div>
+  <% end %>
+</div>

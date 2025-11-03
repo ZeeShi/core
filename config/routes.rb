@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # RECTOR LABS - Homepage
   root "pages#home"
 
+  # Work section - story-driven project showcase
+  resources :works, path: "work", only: [ :index, :show ]
+
   # Health check
   get "up" => "rails/health#show", as: :rails_health_check
 
