@@ -51,40 +51,79 @@
 </div>
 
 <style>
-  .story-content h1, .story-content h2, .story-content h3 {
+  /* Main story heading */
+  .story-content > h1:first-child {
+    font-size: 2.5rem;
     font-weight: 700;
     color: #3B2C22;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  /* Section headings */
+  .story-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3B2C22;
+    margin-top: 3rem;
     margin-bottom: 1rem;
   }
 
-  .story-content h1 { font-size: 2rem; }
-  .story-content h2 { font-size: 1.5rem; }
-  .story-content h3 { font-size: 1.25rem; }
-
-  .story-content p {
-    margin-bottom: 1.5rem;
-    line-height: 1.875;
+  .story-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #3B2C22;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
   }
 
+  /* Paragraphs - generous spacing for readability */
+  .story-content p {
+    margin-bottom: 1.75rem;
+    line-height: 2;
+    font-size: 1.125rem;
+  }
+
+  /* Bold text in paragraphs - acts as mini section headers */
+  .story-content p strong {
+    display: block;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  /* Links */
   .story-content a {
     color: #41CFFF;
     text-decoration: underline;
+    transition: color 0.2s;
   }
 
   .story-content a:hover {
     color: #E58C2E;
   }
 
+  /* Lists - better spacing */
   .story-content ul, .story-content ol {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     padding-left: 2rem;
+    line-height: 1.875;
   }
 
   .story-content li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
+  /* Horizontal rules - section dividers */
+  .story-content hr {
+    border: none;
+    border-top: 2px solid #3B2C22;
+    opacity: 0.1;
+    margin: 3rem 0;
+  }
+
+  /* Inline code */
   .story-content code {
     background-color: #3B2C22;
     color: #FFF7E1;
@@ -93,13 +132,15 @@
     font-size: 0.875em;
   }
 
+  /* Code blocks */
   .story-content pre {
     background-color: #3B2C22;
     color: #FFF7E1;
-    padding: 1rem;
+    padding: 1.25rem;
     border-radius: 0.5rem;
     overflow-x: auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
   }
 
   .story-content pre code {
@@ -107,12 +148,28 @@
     padding: 0;
   }
 
+  /* Blockquotes */
   .story-content blockquote {
     border-left: 4px solid #41CFFF;
-    padding-left: 1rem;
+    padding-left: 1.5rem;
     font-style: italic;
     color: #3B2C22;
     opacity: 0.8;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-size: 1.125rem;
+  }
+
+  /* Footer section - distinct styling */
+  .story-content > hr:last-of-type ~ p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .story-content > hr:last-of-type ~ p strong {
+    display: inline;
+    font-weight: 600;
+    font-size: inherit;
+    margin: 0;
   }
 </style>
