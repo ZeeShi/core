@@ -63,4 +63,58 @@
   .code-block {
     @apply bg-brown text-cream p-6 rounded-lg overflow-x-auto my-6 text-[15px] leading-relaxed;
   }
+
+  /* Version Footer - Deployment Info */
+  .version-footer {
+    @apply fixed bottom-4 right-4 z-50;
+  }
+
+  .version-info {
+    @apply flex items-center gap-2 bg-brown/90 text-cream px-3 py-2 rounded-lg;
+    @apply backdrop-blur-sm shadow-lg;
+    @apply text-xs font-mono;
+  }
+
+  .version-label {
+    @apply text-yellow/80 font-medium;
+  }
+
+  .version-link {
+    @apply flex items-center gap-1.5 no-underline;
+    @apply text-cream/90 transition-colors duration-200;
+  }
+
+  .version-link:hover {
+    @apply text-sky-blue;
+  }
+
+  .version-icon {
+    @apply flex-shrink-0 opacity-75;
+  }
+
+  .version-branch {
+    @apply text-green font-medium;
+  }
+
+  .version-sha {
+    @apply text-cream/90;
+  }
+
+  .version-separator {
+    @apply text-cream/40;
+  }
+
+  @media (max-width: 640px) {
+    .version-footer {
+      @apply bottom-2 right-2;
+    }
+
+    .version-info {
+      @apply px-2 py-1.5 text-[10px];
+    }
+
+    .version-label {
+      @apply hidden;
+    }
+  }
 }

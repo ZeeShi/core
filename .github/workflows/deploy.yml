@@ -41,12 +41,19 @@ jobs:
 
             echo "🚀 Starting deployment..."
 
-            cd ~/core
+            cd ~/apps/core
 
             # Pull latest changes
             echo "📥 Pulling latest code from main..."
             git fetch origin
             git reset --hard origin/main
+
+            # Generate REVISION file with commit SHA and branch
+            echo "📝 Generating REVISION file..."
+            COMMIT_SHA=$(git rev-parse HEAD)
+            BRANCH=$(git rev-parse --abbrev-ref HEAD)
+            echo "${COMMIT_SHA}|${BRANCH}" > REVISION
+            echo "✅ REVISION: ${BRANCH}@${COMMIT_SHA:0:7}"
 
             # Install dependencies
             echo "📦 Installing dependencies..."
