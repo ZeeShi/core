@@ -43,6 +43,10 @@ jobs:
 
             cd ~/apps/core
 
+            # Initialize rbenv
+            export PATH="$HOME/.rbenv/bin:$PATH"
+            eval "$(rbenv init - bash)"
+
             # Pull latest changes
             echo "📥 Pulling latest code from main..."
             git fetch origin
