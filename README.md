@@ -1,404 +1,355 @@
-# RECTOR LABS
+<div align="center">
 
-> **"Building for Eternity"**
+# 🏛️ CORE
 
-Rails 8 monolithic application for the complete rectorspace.com ecosystem.
+**Rails 8 monolith powering the complete rectorspace.com ecosystem**
 
-[![Status](https://img.shields.io/badge/status-in_development-yellow.svg)](https://github.com/RECTOR-LABS/core)
-[![Rails](https://img.shields.io/badge/Rails-8-red.svg)](https://rubyonrails.org)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Live](https://img.shields.io/badge/🌐_Live-rectorspace.com-41CFFF?style=for-the-badge)](https://rectorspace.com)
+[![Ruby](https://img.shields.io/badge/Ruby_on_Rails_8-CC0000?style=for-the-badge&logo=rubyonrails&logoColor=white)](https://rubyonrails.org)
+[![Tailwind](https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
----
+✅ **Production Ready** | 🚀 **Built in 48 Hours** | 🕌 **Built with Ihsan**
 
-## Overview
+[🌐 Visit Live](https://rectorspace.com) • [📖 Read Story](https://rectorspace.com/work/core) • [🏛️ RECTOR LABS](https://github.com/RECTOR-LABS)
 
-**RECTOR LABS** is a unified Rails application serving 7 sections under a single domain. This monolithic architecture combines professional portfolio, experimental projects, Islamic da'wah content, and developer resources into one cohesive platform.
-
-**Philosophy:** "Building for Eternity" - Integrating worldly excellence (dunya) with Islamic values and afterlife objectives (akhirah).
-
-**Tech Stack:** Ruby on Rails 8 + Tailwind CSS v4
+</div>
 
 ---
 
-## The 7-Section Ecosystem
+## 🎯 The Vision
 
-All sections served under `rectorspace.com`:
+A single monolithic platform serving as the complete digital presence for RECTOR—combining portfolio, experiments, writings, Islamic resources, and developer tools under one unified architecture.
+
+**Philosophy:** "Building for Eternity" - where technical excellence (dunya) meets purposeful impact (akhirah).
+
+---
+
+## ✨ The 7-Section Architecture
+
+CORE is a Rails 8 monolith serving `rectorspace.com` with route-based sections:
 
 | Section | Route | Purpose | Status |
 |---------|-------|---------|--------|
-| Homepage | / | Identity hub & landing | ✅ Live |
-| Portfolio | /portfolio | Professional work showcase | 📋 Planned |
-| Labs | /labs | Experiments & learning projects | 📋 Planned |
-| Journal | /journal | Blog & writings (Ghost CMS) | 📋 Planned |
-| Cheatsheet | /cheatsheet | Dev reference & notes | 📋 Planned |
-| Dakwa | /dakwa | Islamic da'wah content | 📋 Planned |
-| Quran | /quran | Quranic resources & tools | 📋 Planned |
+| 🏠 **Homepage** | `/` | Identity hub & project showcase | ✅ Live |
+| 💼 **Work** | `/work` | Story-driven project narratives | ✅ Live |
+| 🧪 **Labs** | `/labs` | Experiments & learning projects | 📋 Planned |
+| ✍️ **Journal** | `/journal` | Blog & writings (Ghost CMS) | 📋 Planned |
+| 📚 **Cheatsheet** | `/cheatsheet` | Developer reference & notes | 📋 Planned |
+| 🕌 **Dakwa** | `/dakwa` | Islamic da'wah content | 📋 Planned |
+| 📖 **Quran** | `/quran` | Quranic resources & tools | 📋 Planned |
 
-**Architecture Highlights:**
-- Single Rails 8 monolith for unified codebase and deployment
-- Route-based sections instead of microservices
-- Shared authentication, database, and design system
-- External Ghost CMS integration for Journal
-- API integrations: GitHub (Portfolio), Quran API (Quran section)
+**Why monolith?** Unified codebase, shared authentication, single deployment, faster iteration, lower operational complexity.
 
 ---
 
-## Quick Start
+## 🛠️ Tech Stack
+
+**Backend:**
+- Ruby on Rails 8 (latest stable)
+- PostgreSQL (primary database)
+- Solid Queue (background jobs)
+- Action Cable (WebSockets)
+
+**Frontend:**
+- Tailwind CSS v4 (utility-first styling)
+- Hotwire (Turbo + Stimulus)
+- JetBrains Mono typography
+- Responsive design (mobile-first)
+
+**Infrastructure:**
+- VPS deployment (Nginx + Puma)
+- GitHub Actions CI/CD
+- Let's Encrypt SSL
+- Hourly GitHub API sync
+
+**Integrations:**
+- GitHub API (project metadata)
+- Ghost CMS API (planned - journal)
+- Quran API (planned - Quran section)
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Ruby 3.3+ (use `rbenv` or `asdf`)
+```bash
+- Ruby 3.3+ (use rbenv or asdf)
 - Rails 8
-- PostgreSQL (recommended) or SQLite (development)
+- PostgreSQL 15+
 - Node.js 18+ (for asset pipeline)
-- Bundler 2.x
+```
 
 ### Installation
 
 ```bash
-# Clone repository
-git clone git@github.com:RECTOR-LABS/core.git
+# Clone the repository
+git clone https://github.com/RECTOR-LABS/core.git
 cd core
 
 # Install dependencies
 bundle install
 
-# Setup environment
+# Set up environment
 cp .env.example .env
-# Edit .env and add your GITHUB_TOKEN
+# Add your GITHUB_TOKEN to .env
 
-# Setup database
-bin/rails db:create db:migrate
-bin/rails github:sync  # Sync repos from GitHub
+# Database setup
+bin/rails db:setup
+
+# Sync GitHub repos (initial sync)
+bin/rails github:sync
 
 # Start development server
-bin/rails server
+bin/dev
+# or just: bin/rails server
 
 # Visit http://localhost:3000
 ```
 
----
-
-## Repository Structure
-
-```
-core/
-├── app/
-│   ├── controllers/      # Section controllers (portfolio, labs, journal, etc.)
-│   ├── models/           # Data models (projects, experiments, snippets, etc.)
-│   ├── views/            # View templates for each section
-│   └── assets/           # Stylesheets, JavaScript, images
-├── config/               # Rails configuration, routes, database
-├── db/                   # Database migrations and schema
-├── public/               # Static files
-├── test/                 # Test suite (Minitest or RSpec)
-├── assets/images/        # Brand assets (logos, profile image)
-├── docs/                 # Documentation
-├── CLAUDE.md             # AI assistant guidance
-└── README.md             # This file
-```
-
----
-
-## Tech Stack Details
-
-### Backend
-- **Framework:** Ruby on Rails 8 (fullstack, hybrid architecture)
-- **Database:** PostgreSQL
-- **Authentication:** TBD (Devise or Rails built-in)
-- **Background Jobs:** Solid Queue (Rails 8 built-in) for hourly GitHub sync
-- **Caching:** Solid Cache (Rails 8 built-in)
-
-### Frontend
-- **Styling:** Tailwind CSS v4 (utility-first, modern design)
-- **JavaScript:** Hotwire (Turbo + Stimulus) for reactive UI
-- **Build:** Propshaft/Sprockets for asset pipeline
-
-### External Services
-- **CMS:** Ghost (journal.rectorspace.com or external)
-- **APIs:** GitHub API, Quran API
-
----
-
-## Design System
-
-**Complete Specification:** [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md)
-
-### Design Philosophy
-
-**"Warm, Personal, Technical"** - Inspired by RECTOR's MonkeDAO NFT profile picture
-
-- **Warm:** Soft cream backgrounds, yellow accents, inviting palette
-- **Personal:** Letter-style narrative (DHH.dk inspired), first-person tone, no navbar/footer
-- **Technical:** JetBrains Mono throughout, pixel art graphics, developer aesthetic
-- **Anonymous but Present:** NFT as visual identity
-
-### Brand Colors (NFT-Inspired)
-
-| Color | Hex | Usage |
-|-------|-----|-------|
-| **Soft Cream** | `#FFF7E1` | Background |
-| **Deep Brown** | `#3B2C22` | Text, headings, code blocks |
-| **Sky Blue** | `#41CFFF` | Links, interactive |
-| **Warm Yellow** | `#F9C846` | Accents, hover |
-| **Clay Orange** | `#E58C2E` | Subheadings |
-| **Leaf Green** | `#A8E063` | Success, CTAs |
-| **Muted Red** | `#C75A44` | Shadows, depth |
-
-### Typography
-
-**Single Font:** JetBrains Mono (monospace) for everything
-- **Body:** 18px, weight 400, line-height 1.75
-- **Headings:** 24-40px, weight 600-700
-- **Code:** 15px, weight 400
-
-**Why JetBrains Mono:**
-- Developer/hacker aesthetic
-- Perfect for code blocks
-- Distinctive personality
-- Aligns with pixel art NFT
-
-### Layout Inspiration
-
-- **DHH.dk:** Minimal nav, letter-style bio, embedded links, generous whitespace
-- **Basecamp.com:** Conversational tone, calm spacing, confident simplicity
-- **Profile Picture:** 150px rounded circle (medium size), centered at top
-
-### Brand Assets
-
-Located in `assets/images/`:
-- RECTOR NFT profile (pixel art)
-- Pixel art icons (from Kenney.nl/itch.io - see `docs/PIXEL_ART_RESOURCES.md`)
-- Custom section icons (portfolio, labs, journal, etc.)
-
----
-
-## Development Workflow
-
-### Running the Application
+### Development Commands
 
 ```bash
-# Start Rails server
-bin/rails server
-
-# Interactive console
+# Console
 bin/rails console
 
-# Run tests
-bin/rails test  # or: bundle exec rspec
-
-# View routes
-bin/rails routes
-```
-
-### Database Management
-
-```bash
-# Create and migrate database
-bin/rails db:create db:migrate
-
-# Seed sample data
+# Database operations
+bin/rails db:migrate
 bin/rails db:seed
-
-# Reset database (drop, create, migrate, seed)
 bin/rails db:reset
 
-# Rollback last migration
-bin/rails db:rollback
-```
+# GitHub integration
+bin/rails github:sync           # Manual sync
+bin/rails github:tech_stack     # Show tech summary
 
-### Generating Code
+# Tests
+bin/rails test
 
-```bash
-# Generate controller
-bin/rails generate controller Portfolio index show
-
-# Generate model
-bin/rails generate model Project title:string description:text url:string featured:boolean
-
-# Generate migration
-bin/rails generate migration AddCategoryToProjects category:string
+# Asset compilation
+bin/rails assets:precompile
 ```
 
 ---
 
-## Implemented Features
+## 📖 Architecture Highlights
 
-### Homepage (✅ Live)
+### GitHub Integration
+- **Automatic caching:** All repos cached in PostgreSQL
+- **Hourly sync:** Solid Queue job updates metadata
+- **Tech stack parser:** Analyzes languages and categorizes projects
+- **Rate limiting:** 5,000 requests/hour with token
 
-The homepage is fully implemented with dynamic GitHub integration:
-
-**Features:**
-- NFT-inspired warm design with JetBrains Mono typography
-- Vision/Mission/Passion statements
-- Dynamic project showcase (6 latest repos from GitHub)
-- Tech stack summary (parsed from all repositories)
-- Contact links (GitHub, X @RZ1989sol, Email rheza10@gmail.com)
-
-**GitHub Integration:**
-- Automatic hourly sync via Solid Queue background jobs
-- Caches 35 repositories (personal + RECTOR-LABS organization)
-- Filters out forks, shows only original projects
-- Tech stack parser categorizes by language
-- Current stats: 18 non-fork repos, TypeScript 44.4%, Shell 16.7%
-
-**Manual Commands:**
-```bash
-bin/rails github:sync          # Sync repos immediately
-bin/rails github:tech_stack    # View tech stack summary
+**Data Flow:**
+```
+GitHub API → GithubApiService → GithubRepo (model) → PagesController → Homepage View
+                ↓
+           SyncGithubReposJob (hourly via Solid Queue)
+                ↓
+           TechStackParser (categorizes languages)
 ```
 
-**Environment Setup:**
-1. Copy `.env.example` to `.env`
-2. Add your `GITHUB_TOKEN` (get from https://github.com/settings/tokens)
-3. Token scope: `public_repo` (read-only)
-4. Rate limit: 5,000 requests/hour (vs 60 without token)
+### Work Section (Story-Driven)
+- **Markdown narratives:** Story-focused, not traditional portfolio
+- **Redcarpet rendering:** Clean, semantic HTML output
+- **Custom CSS:** Justified text, generous spacing for readability
+- **GitHub metadata:** Stars, forks, live URLs integrated
+
+**Custom Slash Command:** `/work:story <github-url>` generates AI-powered narratives
+
+### Design System
+- **Color palette:** NFT-inspired warm theme
+  - Primary: Sky Blue `#41CFFF`, Warm Yellow `#F9C846`
+  - Base: Soft Cream `#FFF7E1`, Deep Brown `#3B2C22`
+- **Typography:** JetBrains Mono (full stack - headings, body, code)
+- **Layout:** DHH.dk inspired - minimal nav, letter-style narrative
+- **Identity:** Anonymous via NFT profile picture
+
+Full design specs: [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md)
 
 ---
 
-## Section Overviews
+## 🌟 Key Features
 
-### Portfolio (/portfolio)
-Professional work showcase with GitHub integration.
-- Display finished projects, case studies
-- GitHub repository integration (pinned repos, stats)
-- Filterable by category, technology
+### Currently Live (Nov 2025)
 
-### Labs (/labs)
-Experimental projects and learning journey.
-- Quick prototypes, hackathon projects
-- Learning experiments, code explorations
-- More casual, WIP-friendly environment
+✅ **Homepage**
+- Dynamic project showcase from GitHub
+- Tech stack summary with categorization
+- NFT profile picture, warm theme design
+- Responsive layout, semantic HTML
 
-### Journal (/journal)
-Blog and writings powered by Ghost CMS.
-- External Ghost CMS integration via Content API
-- Display posts, articles, tutorials
-- RSS feed support
+✅ **Work Section**
+- Story-driven project pages (narrative format)
+- Markdown rendering with custom CSS
+- GitHub repository metadata
+- Individual project pages (`/work/:slug`)
 
-### Cheatsheet (/cheatsheet)
-Developer reference and notes.
-- Code snippets, command references
-- Tips, tricks, best practices
-- Searchable, categorized content
+✅ **GitHub Sync**
+- Hourly background job via Solid Queue
+- 35 repos cached (24 personal + 11 org)
+- Tech stack parser with language analysis
+- Manual sync via rake tasks
 
-### Dakwa (/dakwa)
-Islamic da'wah content and resources.
-- Articles on Islamic topics
-- Beneficial reminders, guidance
-- Community resources
+✅ **Production Infrastructure**
+- Live at [rectorspace.com](https://rectorspace.com)
+- CI/CD via GitHub Actions
+- SSL with Let's Encrypt
+- VPS deployment (Nginx + Puma)
 
-### Quran (/quran)
-Quranic resources and tools.
-- Quran API integration
-- Tafsir, translations, recitations
-- Search and bookmark features
+### Coming Soon
+
+🚧 **Labs Section** - Experiments and learning projects
+🚧 **Journal Section** - Ghost CMS integration for blog
+🚧 **Cheatsheet Section** - Developer reference notes
+🚧 **Dakwa Section** - Islamic da'wah content
+🚧 **Quran Section** - Quranic resources and tools
 
 ---
 
-## Deployment
+## 📊 Current Stats
 
-### VPS Deployment Strategy
-
-- **Server:** Nginx + Puma/Passenger
-- **Database:** PostgreSQL
-- **SSL:** Let's Encrypt (certbot)
-- **CI/CD:** GitHub Actions
-- **Environment:** Production user account on VPS
-- **Monitoring:** TBD (Sentry, New Relic, or similar)
-
-### Environment Variables
-
-Required environment variables (use Rails credentials or `.env`):
-- `DATABASE_URL` - PostgreSQL connection string
-- `GHOST_API_URL` - Ghost CMS Content API URL
-- `GHOST_API_KEY` - Ghost API key
-- `GITHUB_TOKEN` - GitHub API token (for Portfolio)
-- `QURAN_API_KEY` - Quran API credentials (if needed)
-
-**Security:** Never commit `.env` files. Use Rails encrypted credentials for production.
+**Built:** Nov 2-3, 2025 (one weekend!)
+**Status:** Live in production
+**Sections:** 2/7 complete (Homepage + Work)
+**Repositories Tracked:** 35 (18 non-fork)
+**Tech Stack:** TypeScript (44.4%), Shell (16.7%), JavaScript, Rust, Python
+**Commits:** 15+ in first 3 days
+**Deploy Time:** < 5 minutes (CI/CD)
 
 ---
 
-## Branch Strategy
+## 🎨 Design Philosophy
 
-- **`main`** - Production-ready code (protected)
-- **`dev`** - Active development (default branch)
-- **`feature/*`** - Feature branches (merge into `dev`)
-- **`hotfix/*`** - Critical fixes (merge into `main` and `dev`)
+**Inspirations:**
+- **DHH.dk:** Minimal navigation, letter-style narrative, embedded links
+- **Basecamp:** Generous whitespace, conversational tone, calm spacing
 
-### Commit Format
+**Principles:**
+- **Content-first:** No navbar/footer/sidebar clutter
+- **Scannable:** Clear hierarchy, generous line height (1.75-1.875)
+- **Warm aesthetic:** Light theme only, NFT-inspired colors
+- **Monospace beauty:** JetBrains Mono everywhere (18px for readability)
 
-Use conventional commits:
-- `feat:` - New features
-- `fix:` - Bug fixes
-- `docs:` - Documentation updates
-- `refactor:` - Code refactoring
-- `test:` - Test additions/updates
-- `chore:` - Maintenance tasks
-
----
-
-## Philosophy & Values
-
-### Building for Eternity
-
-Integrating worldly (dunya) aspirations with afterlife (akhirah) objectives:
-
-**Worldly (Dunya):**
-- Technical excellence and professional portfolio
-- Independent builder identity and personal brand
-- Hackathon success and community impact
-- Continuous learning and skill development
-
-**Afterlife (Akhirah):**
-- Islamic da'wah platforms (Dakwa, Quran sections)
-- Sharing beneficial knowledge (`ilm nafi'`)
-- Building tools and resources for the ummah
-- Sadaqah jariyah (ongoing charity through beneficial content)
-
-### Islamic Values in Code
-
-- **Ihsan (Excellence):** Strive for perfection in every implementation, 100% working standard
-- **Amanah (Trust):** Treat codebase as sacred responsibility, maintain with care
-- **Avoid Israf (Waste):** Write efficient, clean code without bloat or redundancy
-- **Barakah through Sadaqah:** Give sadaqah before complex tasks to invite Allah's blessings
+**Brand Assets:**
+- 3 logo variants + NFT profile picture
+- Pixel art graphics from Kenney.nl
+- Custom color palette with warm tones
 
 ---
 
-## Contributing
+## 🏆 Build Story
 
-This is a personal project, but feedback and suggestions are welcome!
+**Timeline:**
+- **Saturday (Nov 2):** Rails 8 initialization, design system, homepage with GitHub integration
+- **Sunday (Nov 3):** Work section, story rendering, production deployment, CI/CD setup
+- **Result:** Fully functional, production-ready platform in 48 hours
 
+**Philosophy Applied:**
+- ✅ **100% Working Standard:** Every feature fully functional before deployment
+- ✅ **Ihsan (Excellence):** Beautiful design, clean code, thoughtful UX
+- ✅ **Amanah (Responsibility):** Production-ready, secure, maintainable
+- ✅ **No Israf (Waste):** Efficient architecture, minimal dependencies
+
+**Lessons Learned:**
+- Rails 8 is blazingly fast for monolithic apps
+- Monoliths > microservices for solo developers
+- Design system upfront = faster implementation
+- GitHub API + caching = perfect project showcase
+
+---
+
+## 🗺️ Roadmap
+
+**Phase 1: Foundation** ✅ (Nov 2-3, 2025)
+- [x] Rails 8 initialization
+- [x] Homepage with GitHub integration
+- [x] Work section with story narratives
+- [x] Production deployment + CI/CD
+- [x] Design system implementation
+
+**Phase 2: Content Expansion** 🚧 (Nov-Dec 2025)
+- [ ] Labs section (experiments showcase)
+- [ ] Journal section (Ghost CMS integration)
+- [ ] Cheatsheet section (developer notes)
+
+**Phase 3: Islamic Platforms** 📋 (Q1 2026)
+- [ ] Dakwa section (da'wah content)
+- [ ] Quran section (resources + tools)
+- [ ] Islamic content strategy
+
+**Phase 4: Advanced Features** 📋 (Q2 2026)
+- [ ] Search functionality across all sections
+- [ ] RSS feeds for Journal
+- [ ] Analytics dashboard
+- [ ] Performance optimization
+
+---
+
+## 🤝 Contributing
+
+Built by RECTOR LABS with **Ihsan** (excellence) and **Amanah** (responsibility).
+
+**Contribution Areas:**
+- 🐛 Bug reports and fixes
+- 🎨 Design improvements
+- 📖 Documentation enhancements
+- 🚀 Feature suggestions
+- 🔍 Code reviews
+
+**Guidelines:**
 1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'feat: add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'feat: Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
+
+**Standards:**
+- Follow Rails conventions and best practices
+- Write tests for new features
+- Update documentation as needed
+- Keep commits atomic and well-described
 
 ---
 
-## Resources & Links
+## 📄 License
 
-**Documentation:**
-- [Rails Guides](https://guides.rubyonrails.org)
-- [Tailwind CSS v4](https://tailwindcss.com/docs)
-- [Ghost Content API](https://ghost.org/docs/content-api/)
-- [GitHub REST API](https://docs.github.com/en/rest)
-
-**Links:**
-- **Organization:** [RECTOR-LABS](https://github.com/RECTOR-LABS)
-- **Personal GitHub:** [@rz1989s](https://github.com/rz1989s)
-- **Website:** [rectorspace.com](https://rectorspace.com) _(coming soon)_
+This project is open source and available under the MIT License.
 
 ---
 
-## License
+## 🔗 Links
 
-MIT License - See [LICENSE](LICENSE) for details.
+- 🌐 **Website:** [rectorspace.com](https://rectorspace.com)
+- 📖 **Project Story:** [rectorspace.com/work/core](https://rectorspace.com/work/core)
+- 🐙 **Personal GitHub:** [@rz1989s](https://github.com/rz1989s)
+- 🏛️ **Organization:** [RECTOR-LABS](https://github.com/RECTOR-LABS)
 
 ---
 
-**May Allah accept this work and make it beneficial for the ummah. Aamiin.**
+## 🙏 Acknowledgments
 
-**RECTOR LABS** | Building for Eternity | 2025
+- **Ruby on Rails** - DHH and the Rails core team for Rails 8
+- **Tailwind CSS** - Adam Wathan for the best CSS framework
+- **Kenney.nl** - Free pixel art assets
+- **GitHub** - For the amazing API and platform
+- **Superteam** - Inspiring the blockchain journey
+- **Allah SWT** - For the ability to create and learn
+
+---
+
+<div align="center">
+
+**Built with Bismillah** 🕌
+
+*May this platform bring benefit to those who visit. Aamiin.*
+
+---
+
+[🏛️ RECTOR LABS](https://github.com/RECTOR-LABS) | Building for Eternity | 2025
+
+[![Ruby on Rails](https://img.shields.io/badge/Rails_8-CC0000?style=flat&logo=rubyonrails&logoColor=white)](https://rubyonrails.org)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)](https://postgresql.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Deployed](https://img.shields.io/badge/Deployed-rectorspace.com-41CFFF?style=flat)](https://rectorspace.com)
+
+</div>
